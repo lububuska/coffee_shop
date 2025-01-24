@@ -1,0 +1,36 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id, "Покупатель" %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Выбрать покупателя" }, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_id, "Товар" %>
+    <%= form.collection_select :product_id, Product.all, :id, :name, { prompt: "Выбрать продукт" }, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity, "Кол-во" %>
+    <%= form.number_field :quantity, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_date, "Дата заказа" %>
+    <%= form.date_select :order_date, class: "form-input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-new" %>
+  </div>
+<% end %>

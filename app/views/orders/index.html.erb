@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказы</title>
+</head>
+<body>
+  <h1>Заказы</h1>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Покупатель</th>
+          <th>Продукт</th>
+          <th>Кол-во</th>
+          <th>Дата покупки</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.customer.name %></td>
+            <td><%= order.product.name %></td>
+            <td><%= order.quantity %></td>
+            <td><%= order.order_date.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= link_to 'Показать', order, class: "btn btn-show" %></td>
+            <td><%= link_to 'Редактировать', edit_order_path(order), class: "btn btn-edit" %></td>
+            <td><%= link_to 'Удалить', order, method: :delete, data: { confirm: 'Вы точно хотите удалить заказ?' }, class: "btn btn-destroy" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Кнопки справа -->
+    <div class="buttons">
+      <%= link_to 'Новый заказ', new_order_path, class: "btn btn-new" %>
+    </div>
+  </div>
+</body>
+</html>
