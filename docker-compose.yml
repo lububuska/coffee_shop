@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: books
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: w4OiIiE9Sx52
+    ports:
+      - 5432:5432
