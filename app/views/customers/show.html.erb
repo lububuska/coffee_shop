@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали клиента</title>
+</head>
+<body>
+  <h1><%= @customer.name %></h1>
+
+  <div class="container">
+    <!-- Таблица слева -->
+    <table>
+      <tr>
+        <th>Атрибуты</th>
+        <th>Значение</th>
+      </tr>
+      <tr>
+        <td><strong>Почта</strong></td>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td><strong>Номер телефона</strong></td>
+        <td><%= @customer.phone %></td>
+      </tr>
+    </table>
+
+    <!-- Кнопки справа -->
+    <div class="buttons">
+      <%= link_to 'Редактировать', edit_customer_path(@customer), class: "btn btn-edit" %>
+      <%= link_to 'Удалить', @customer, method: :delete, data: { confirm: 'Вы точно хотите удалить клиента?' }, class: "btn btn-destroy" %>
+      <%= link_to 'Назад', customers_path, class: "btn btn-show" %>
+    </div>
+  </div>
+</body>
+</html>

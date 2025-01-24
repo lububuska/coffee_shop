@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детали продукта</title>
+</head>
+<body>
+  <h1><%= @product.name %></h1>
+
+  <div class="container">
+    <!-- Таблица слева -->
+    <table>
+      <tr>
+        <th>Атрибуты</th>
+        <th>Значение</th>
+      </tr>
+      <tr>
+        <td><strong>Описание</strong></td>
+        <td><%= @product.description %></td>
+      </tr>
+      <tr>
+        <td><strong>Цена</strong></td>
+        <td><%= number_to_currency(@product.price) %></td>
+      </tr>
+    </table>
+
+    <!-- Кнопки справа -->
+    <div class="buttons">
+      <%= link_to 'Редактировать', edit_product_path(@product), class: "btn btn-edit" %>
+      <%= link_to 'Удалить', @product, method: :delete, data: { confirm: 'Вы точно хотите удалить продукт?' }, class: "btn btn-destroy" %>
+      <%= link_to 'Назад', products_path, class: "btn btn-show" %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продукты</title>
+</head>
+<body>
+  <h1>Продукты</h1>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Описание</th>
+          <th>Цена</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to 'Показать', product, class: "btn btn-show" %></td>
+            <td><%= link_to 'Редактировать', edit_product_path(product), class: "btn btn-edit" %></td>
+            <td><%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы точно хотите удалить продукт?' }, class: "btn btn-destroy" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <!-- Кнопки справа -->
+    <div class="buttons">
+      <%= link_to 'Новый продукт', new_product_path, class: "btn btn-new" %>
+    </div>
+  </div>
+</body>
+</html>
